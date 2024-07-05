@@ -213,7 +213,7 @@ class Drone(dronekit.Vehicle):
         client.send(TCP_msg.encode())
         print("Sent:",TCP_msg)
         '''
-        self.protocol.sendMsg(client, msgName, self.vehicle)
+        self.protocol.sendMsg(msgName, self.vehicle)
     # Rover Drone will need to receive Base's coordinates and keep following it (keep flyToPoint(Base's coordinates))
     def receiveInfo(self, client):
         '''
@@ -231,21 +231,22 @@ class Drone(dronekit.Vehicle):
         # assert(lon <= 180 and lon >= -180)             
         # assert(alt < 100)                   # Assumes altitude below 100, if higher the message format requires adaptation
         '''
-        val = self.protocol.recvMsg(client)
+        val = self.protocol.recvMsg()
         # 1. If Protocol receives None, it is probably because of the connection has been closed
-        if(val == None):
+        if(val == (None, None)):
             print("Protocol Received None")
             return None
         
         # 2. Messages like LAND, LANDED, TAKEOFF, or TOOKOFF will only contain one value representing which one
-        if(len(val) == 1):
+        if(len(val) == 2):
             msgName = val[0]
+            addr = val[1]
             print("Received Message:", msgName)
             return msgName
         
         # 3. Last possibility is the vehicle coordinates information
         else:
-            lat, lon, alt, recvTime = val
+            lat, lon, alt, recvTime , addr= val
             print("Received Message:", lat, lon, alt, recvTime)
             p1 = LocationGlobalRelative(lat,lon,alt)
             
