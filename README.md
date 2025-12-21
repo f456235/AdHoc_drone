@@ -10,18 +10,18 @@
 
 ## 📖 Project Overview
 
-[cite_start]This project implements a fully **decentralized Mobile Ad-Hoc Network (MANET)** for autonomous drone swarms[cite: 43]. [cite_start]Unlike traditional centralized control systems, our architecture enables drones to communicate directly with each other (P2P) without relying on a ground station, ensuring resilience and scalability[cite: 49, 53].
+This project implements a fully **decentralized Mobile Ad-Hoc Network (MANET)** for autonomous drone swarms[cite: 43]. Unlike traditional centralized control systems, our architecture enables drones to communicate directly with each other (P2P) without relying on a ground station, ensuring resilience and scalability.
 
-The system focuses on **Real-time Decision Making** by optimizing the communication layer. [cite_start]We engineered a custom **lightweight UDP protocol** and a **Counter-Based Suppression Scheme** to solve network congestion (Broadcast Storm Problem) inherent in multi-hop ad-hoc networks[cite: 43, 64].
+The system focuses on **Real-time Decision Making** by optimizing the communication layer. We engineered a custom **lightweight UDP protocol** and a **Counter-Based Suppression Scheme** to solve network congestion (Broadcast Storm Problem) inherent in multi-hop ad-hoc networks[cite: 43, 64].
 
 ## ⚙️ Key Features
 
-* [cite_start]**Decentralized MANET Architecture:** Enables dynamic topology where drones can freely join/leave without collapsing the network[cite: 53].
-* [cite_start]**Custom UDP Protocol:** A fixed-width, position-based byte stream designed to minimize latency and payload overhead[cite: 68].
-* [cite_start]**Broadcast Storm Mitigation:** Implemented a **Counter-Based Scheme** with random delays to reduce redundant packet rebroadcasting and collisions[cite: 63, 64].
+* **Decentralized MANET Architecture:** Enables dynamic topology where drones can freely join/leave without collapsing the network[cite: 53].
+* **Custom UDP Protocol:** A fixed-width, position-based byte stream designed to minimize latency and payload overhead[cite: 68].
+* **Broadcast Storm Mitigation:** Implemented a **Counter-Based Scheme** with random delays to reduce redundant packet rebroadcasting and collisions[cite: 63, 64].
 * **Distributed Formation Control:**
-    * [cite_start]**V-Shape Formation:** Reduces air resistance and maintains visual contact[cite: 100, 101].
-    * [cite_start]**Boids Algorithm:** Integration of Separation, Alignment, and Cohesion rules to prevent collisions during dynamic turns[cite: 112, 117].
+    * **V-Shape Formation:** Reduces air resistance and maintains visual contact[cite: 100, 101].
+    * **Boids Algorithm:** Integration of Separation, Alignment, and Cohesion rules to prevent collisions during dynamic turns[cite: 112, 117].
 
 ---
 
@@ -31,8 +31,8 @@ The system focuses on **Real-time Decision Making** by optimizing the communicat
 * **Flight Controller:** Pixhawk 4
 * **Onboard Computer:** Raspberry Pi 4 (Computing Node)
 * **Network Interface:**
-    * [cite_start]`wlan0`: Configured in **Ad-Hoc Mode** for inter-drone communication (MANET)[cite: 57].
-    * [cite_start]`wlan1`: Wi-Fi mode for telemetry monitoring and debugging[cite: 57].
+    * `wlan0`: Configured in **Ad-Hoc Mode** for inter-drone communication (MANET).
+    * `wlan1`: Wi-Fi mode for telemetry monitoring and debugging.
 
 ### 2. Communication Protocol
 To ensure real-time responsiveness, we replaced standard JSON with a **custom byte-level protocol**.
@@ -44,12 +44,12 @@ To ensure real-time responsiveness, we replaced standard JSON with a **custom by
 | **Tookoff** | `2` | ACK |
 | **Next_Coord** | `5` | Target Lat/Lon, Drone ID, Heading |
 
-> [cite_start]*See `Report.pdf` for full protocol specification[cite: 69].*
+
 
 ### 3. Coordinate Calculation Logic
 Each drone independently calculates its target position based on the leader's telemetry, eliminating the need for central computation.
-* [cite_start]**Formation Logic:** Calculates offsets $(dx, dy)$ based on V-shape angle $\theta = 30^\circ$[cite: 74, 82].
-* **Rotation Matrix:** Applies rotation based on the leader's heading to generate absolute GPS coordinates[cite: 85, 86].
+* **Formation Logic:** Calculates offsets $(dx, dy)$ based on V-shape angle $\theta = 30^\circ$.
+* **Rotation Matrix:** Applies rotation based on the leader's heading to generate absolute GPS coordinates.
 
 ---
 
