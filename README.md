@@ -10,18 +10,18 @@
 
 ## 📖 Project Overview
 
-This project implements a fully **decentralized Mobile Ad-Hoc Network (MANET)** for autonomous drone swarms[cite: 43]. Unlike traditional centralized control systems, our architecture enables drones to communicate directly with each other (P2P) without relying on a ground station, ensuring resilience and scalability.
+This project implements a fully **decentralized Mobile Ad-Hoc Network (MANET)** for autonomous drone swarms. Unlike traditional centralized control systems, our architecture enables drones to communicate directly with each other (P2P) without relying on a ground station, ensuring resilience and scalability.
 
-The system focuses on **Real-time Decision Making** by optimizing the communication layer. We engineered a custom **lightweight UDP protocol** and a **Counter-Based Suppression Scheme** to solve network congestion (Broadcast Storm Problem) inherent in multi-hop ad-hoc networks[cite: 43, 64].
+The system focuses on **Real-time Decision Making** by optimizing the communication layer. We engineered a custom **lightweight UDP protocol** and a **Counter-Based Suppression Scheme** to solve network congestion (Broadcast Storm Problem) inherent in multi-hop ad-hoc networks.
 
 ## ⚙️ Key Features
 
-* **Decentralized MANET Architecture:** Enables dynamic topology where drones can freely join/leave without collapsing the network[cite: 53].
-* **Custom UDP Protocol:** A fixed-width, position-based byte stream designed to minimize latency and payload overhead[cite: 68].
-* **Broadcast Storm Mitigation:** Implemented a **Counter-Based Scheme** with random delays to reduce redundant packet rebroadcasting and collisions[cite: 63, 64].
+* **Decentralized MANET Architecture:** Enables dynamic topology where drones can freely join/leave without collapsing the network.
+* **Custom UDP Protocol:** A fixed-width, position-based byte stream designed to minimize latency and payload overhead.
+* **Broadcast Storm Mitigation:** Implemented a **Counter-Based Scheme** with random delays to reduce redundant packet rebroadcasting and collisions.
 * **Distributed Formation Control:**
-    * **V-Shape Formation:** Reduces air resistance and maintains visual contact[cite: 100, 101].
-    * **Boids Algorithm:** Integration of Separation, Alignment, and Cohesion rules to prevent collisions during dynamic turns[cite: 112, 117].
+    * **V-Shape Formation:** Reduces air resistance and maintains visual contact.
+    * **Boids Algorithm:** Integration of Separation, Alignment, and Cohesion rules to prevent collisions during dynamic turns.
 
 ---
 
